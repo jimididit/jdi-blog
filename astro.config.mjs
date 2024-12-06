@@ -22,6 +22,11 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
   server: {
     port: 4321, // The port to run the dev server on.
   },
+  resolve: {
+    alias: {
+      $: './src',
+    },
+  },
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
