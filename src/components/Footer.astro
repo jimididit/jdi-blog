@@ -1,11 +1,13 @@
 ---
     import { SITE } from '$/config'
     import ModeLabel from './ModeLabel.svelte'
+
+    const currentYear: number = new Date().getFullYear();
 ---
 <footer class="footer">
     <nav class="nav">
-        <div>2021  &copy; Copyright notice |  <a href={ SITE.githubUrl } title={`${ SITE.name }'s Github URL'`}>{ SITE.name }</a>
-        <ModeLabel client:load/> theme on <a href="https://astro.build/">Astro</a></div>
+        <div>{ currentYear }  &copy; Copyright | <a href={ SITE.webURL } title={`${ SITE.name }'s Github URL'`} target="_blank">{ SITE.name }</a>
+        </div>
     </nav>
 </footer>
 <style>
