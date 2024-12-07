@@ -30,6 +30,7 @@ export const SITE = {
 	description: "An Experienced Developer's Experiences",
 	url: "https://jdi-blog.vercel.app",
 	githubUrl: "https://github.com/jimididit",
+	webURL: "https://jimididit.com",
 	listDrafts: true,
 	image:
 		"https://raw.githubusercontent.com/jimididit/jdi/main/public/astro-banner.png",
