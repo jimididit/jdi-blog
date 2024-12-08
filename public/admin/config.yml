@@ -3,8 +3,8 @@ backend:
   branch: main
   publish_mode: editorial_workflow
   repo: jimididit/jdi-blog
-  site_domain: jdi-blog.vercel.app # change this to your domain
-  base_url: https://jdi-blog.vercel.app # change this to your prod URL
+  site_domain: jdi-blog.vercel.app # change this domain
+  base_url: https://jdi-blog.vercel.app # change this to prod URL
   auth_scope: repo
   auth_endpoint: oauth
   display_url: https://jdi-blog.vercel.app
