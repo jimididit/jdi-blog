@@ -33,7 +33,7 @@ export const SITE = {
 	webURL: "https://jimididit.com",
 	listDrafts: true,
 	image:
-		"https://raw.githubusercontent.com/jimididit/jdi/main/public/astro-banner.png",
+		"",
 	// YT video channel Id (used in media.astro)
 	ytChannelId: "UCrnOK-fhwtwdcjYVnKysm4Q",
 	// Optional, user/author settings (example)
