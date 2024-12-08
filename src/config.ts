@@ -38,13 +38,13 @@ export const SITE = {
 	ytChannelId: "UCrnOK-fhwtwdcjYVnKysm4Q",
 	// Optional, user/author settings (example)
 	// Author: name
-	author: "jimi flynn", // Example: Fred K. Schott
+	author: "jimi flynn",
 	// Author: Twitter handler
-	authorTwitter: "jimdidit", // Example: FredKSchott
+	authorTwitter: "jimdidit",
 	// Author: Instagram handler
-	authorInsta: "jimi.did.it", // Example: FredKSchott
+	authorInsta: "jimi.did.it",
 	// Author: Image external source
-	authorImage: "https://avatars.githubusercontent.com/u/98427565?v=4", // Example: https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png
+	authorImage: "https://avatars.githubusercontent.com/u/98427565?v=4",
 	// Author: Bio
 	authorBio:
 		"Programming Geek, Cyber Security Enthusiast, Content Creator",
@@ -52,7 +52,7 @@ export const SITE = {
 
 // Ink - Theme configuration
 export const PAGE_SIZE = 8;
-export const USE_POST_IMG_OVERLAY = false;
+export const USE_POST_IMG_OVERLAY = true;
 export const USE_MEDIA_THUMBNAIL = true;
 
 export const USE_AUTHOR_CARD = true;
