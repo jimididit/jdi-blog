@@ -35,10 +35,10 @@ export const SITE = {
 	image:
 		"https://raw.githubusercontent.com/jimididit/jdi/main/public/astro-banner.png",
 	// YT video channel Id (used in media.astro)
-	ytChannelId: "",
+	ytChannelId: "UCrnOK-fhwtwdcjYVnKysm4Q",
 	// Optional, user/author settings (example)
 	// Author: name
-	author: "", // Example: Fred K. Schott
+	author: "jimi flynn", // Example: Fred K. Schott
 	// Author: Twitter handler
 	authorTwitter: "", // Example: FredKSchott
 	// Author: Image external source
@@ -54,6 +54,6 @@ export const USE_POST_IMG_OVERLAY = false;
 export const USE_MEDIA_THUMBNAIL = true;
 
 export const USE_AUTHOR_CARD = true;
-export const USE_SUBSCRIPTION = false; /* works only when USE_AUTHOR_CARD is true */
+export const USE_SUBSCRIPTION = true; /* works only when USE_AUTHOR_CARD is true */
 
 export const USE_VIEW_STATS = true;
