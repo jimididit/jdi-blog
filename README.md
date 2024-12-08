@@ -1,6 +1,6 @@
 # jimididit - Blog Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d09c06ef-e8f7-4a37-8632-78cc4de7bed7/deploy-status)](https://app.netlify.com/sites/jdi-blog/deploys) [![Vercel Status](https://vercel.com/api/v1/badges/prj_4IEpgfi8HfVbF9aZAYHbsi7dBDud/deployment.svg)](https://vercel.com/jimididits-projects/jdi-blog)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d09c06ef-e8f7-4a37-8632-78cc4de7bed7/deploy-status)](https://app.netlify.com/sites/jdi-blog/deploys) [![CI](https://github.com/jimididit/jdi-blog/actions/workflows/main.yml/badge.svg)](https://github.com/jimididit/jdi-blog/actions/workflows/main.yml)
 
 
 This is my personal blog website where I share my thoughts, tutorials, and updates on various topics. The site is built to be fast, minimalistic, and developer-friendly, showcasing the latest web development technologies.
