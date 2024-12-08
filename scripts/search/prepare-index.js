@@ -8,11 +8,12 @@ import grayMatter from 'gray-matter'
     const srcDir = path.join(process.cwd(), 'src')
     const publicDir = path.join(process.cwd(), 'public')
     const contentBlogDir = path.join(srcDir, 'content', 'blog')
-    const contentFilePattern = path.join(contentBlogDir, '*.md')
+    const contentFilePattern = path.join(contentBlogDir, '*.{md,mdx,mdoc}')
     const indexFile = path.join(publicDir, 'search-index.json')
     const getSlugFromPathname = (pathname) => path.basename(pathname, path.extname(pathname))
 
     const contentFilePaths = await globby([ contentFilePattern ])
+    console.log("Files matched:", contentFilePaths, process.cwd());
 
     if(contentFilePaths.length) {
         const files = contentFilePaths.map(async(filePath) => await fs.readFile(filePath, 'utf8'))
@@ -20,6 +21,7 @@ import grayMatter from 'gray-matter'
         let i = 0
         for await (let file of files){
             const { data: { title, description, tags }, content } = grayMatter(file)
+            console.log("Parsed file:", { title, description, tags });
             index.push({
                 slug: getSlugFromPathname(contentFilePaths[i]),
                 category: 'blog',
