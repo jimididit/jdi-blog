@@ -15,7 +15,7 @@
     "cz": "cz"
   },
   "engines": {
-    "node": "18.17.0"
+    "node": "20.15.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.0",
