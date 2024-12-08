@@ -40,9 +40,11 @@ export const SITE = {
 	// Author: name
 	author: "jimi flynn", // Example: Fred K. Schott
 	// Author: Twitter handler
-	authorTwitter: "", // Example: FredKSchott
+	authorTwitter: "jimdidit", // Example: FredKSchott
+	// Author: Instagram handler
+	authorInsta: "jimi.did.it", // Example: FredKSchott
 	// Author: Image external source
-	authorImage: "", // Example: https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png
+	authorImage: "https://avatars.githubusercontent.com/u/98427565?v=4", // Example: https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png
 	// Author: Bio
 	authorBio:
 		"Programming Geek, Cyber Security Enthusiast, Content Creator",
