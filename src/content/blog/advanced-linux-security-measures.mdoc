@@ -29,7 +29,7 @@ Login security is often the first line of defense against cyber threats. Weak or
 
 One of the most effective ways to secure SSH access to your Linux system is by setting up passwordless login using SSH keys. This method eliminates the need for password-based authentication, which can be vulnerable to brute-force attacks, and instead uses cryptographic keys that are nearly impossible to crack.
 
-### How to Set Up Passwordless SSH Login:
+### How to Set Up Passwordless SSH Login
 
 #### Step 1: Generate SSH Keys
 
@@ -61,7 +61,7 @@ ssh username@remote_host
 
 If configured correctly, you should be able to log in without a password.
 
-### Why It’s Secure:
+### Why It’s Secure
 
 Passwordless SSH login uses a cryptographic key pair, making it far more secure than traditional passwords. The private key stays on your local machine, and the public key resides on the server, ensuring robust protection.
 
@@ -69,7 +69,7 @@ Passwordless SSH login uses a cryptographic key pair, making it far more secure 
 
 Disabling password authentication entirely ensures that only users with valid SSH keys can access your server.
 
-### How to Enforce Key-Based Authentication:
+### How to Enforce Key-Based Authentication
 
 #### Step 1: Edit the SSH Configuration File
 
@@ -101,7 +101,7 @@ Restart the SSH service to apply changes:
 sudo systemctl restart ssh
 ```
 
-### Why It’s Secure:
+### Why It’s Secure
 
 Disabling password authentication eliminates brute-force attacks on user passwords, adding a robust layer of security.
 
@@ -109,7 +109,7 @@ Disabling password authentication eliminates brute-force attacks on user passwor
 
 2FA adds a second authentication factor, such as a one-time code, making unauthorized access significantly more difficult.
 
-### How to Set Up 2FA:
+### How to Set Up 2FA
 
 #### Step 1: Install Google Authenticator PAM
 
@@ -157,7 +157,7 @@ Restart the SSH service:
 sudo systemctl restart ssh
 ```
 
-### Why It’s Secure:
+### Why It’s Secure
 
 2FA ensures that even if an attacker obtains your SSH key, they cannot log in without the second authentication factor.
 
@@ -165,7 +165,7 @@ sudo systemctl restart ssh
 
 The root account is a prime target for attackers. Disabling root login forces users to log in with less privileged accounts and escalate privileges when necessary.
 
-### How to Disable Root Login:
+### How to Disable Root Login
 
 #### Step 1: Edit the SSH Configuration File
 
@@ -191,7 +191,7 @@ Restart the SSH service:
 sudo systemctl restart ssh
 ```
 
-### Why It’s Secure:
+### Why It’s Secure
 
 Disabling root login reduces the attack surface of your server, forcing attackers to compromise a less privileged account and escalate privileges—a significantly more challenging task.
 
