@@ -25,6 +25,7 @@ const { content, meta } = Astro.props
 const AUTHOR_NAME = content.author ? content.author : SITE?.author ? SITE?.author : "Author"
 const AUTHOR_TWITTER = content.authorTwitter ? content.authorTwitter : SITE?.authorTwitter ? SITE?.authorTwitter : ""
 const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorImage ? SITE?.authorImage : ""
+
 ---
 <!doctype html>
 <html lang="en">
@@ -92,7 +93,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                         <br/>
                         {
                             USE_SUBSCRIPTION ?
-                            <form action="/api/subscribe" method="POST" id="subscriberForm" class="subscription-form">
+                            <form id="subscriberForm" class="subscription-form">
                                 <label for="email"></label>
                                 <input type="email" name="email" id="email" placeholder="Enter your email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
                                 <button type="submit">Subscribe</button>
@@ -108,6 +109,44 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                     <EditUrl label=" Suggest changes on GitHub" editUrl={`${SITE.githubUrl}/tree/main/src/content/${meta?.collection}/${meta?.id}`}/>
             }
         </div>
+        <script>
+            const handleFormSubmission = async (event: Event) => {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                const form = event.target as HTMLFormElement;
+                const emailInput = form.querySelector<HTMLInputElement>('#email');
+                const email = emailInput?.value;
+
+                if (!email) {
+                    alert('Please enter a valid email!');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/api/subscribe', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email }),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Subscription successful!');
+                    } else {
+                        alert(`Error: ${data.error}`);
+                    }
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            };
+
+            const form = document.querySelector('form#subscriberForm')
+            form?.addEventListener('submit', handleFormSubmission)
+        </script>
     </MainLayout>
 </html>
 <style>
