@@ -2,10 +2,12 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@libsql/client';
 import { v4 as uuidv4 } from 'uuid';
 
+const dbURL: any = process.env.TURSO_DB_SUBSCRIBERS_URL
+
 // Initialize Turso Client
 const client = createClient({
-    url: import.meta.env.TURSO_DB_SUBSCRIBERS_URL,
-    authToken: import.meta.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN,
+    url: dbURL,
+    authToken: process.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN,
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
