@@ -92,9 +92,9 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                         <br/>
                         {
                             USE_SUBSCRIPTION ?
-                            <form action="" class="subscription-form">
+                            <form action="/api/subscribe" id="subscriberForm" class="subscription-form">
                                 <label for="email"></label>
-                                <input type="email" name="email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
+                                <input type="email" name="email" id="email" placeholder="Enter your email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
                                 <button type="submit">Subscribe</button>
                             </form> :
                             <a class="author-card__follow-btn button" target="_blank" href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}><Icon class="w-5 h-5 inline-block" pack="mdi" name="twitter" /> Follow on Twitter</a>
