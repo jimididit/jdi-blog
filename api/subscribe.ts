@@ -14,14 +14,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    let email;
-    try {
-        // Parse the request body
-        const body = JSON.parse(req.body as string);
-        email = body.email;
-    } catch (error) {
-        return res.status(400).json({ error: 'Invalid request body' });
-    }
+    const { email } = req.body;
 
     if (!email || !email.match(/^\S+@\S+\.\S+$/)) {
         return res.status(400).json({ error: 'Invalid email address' });
