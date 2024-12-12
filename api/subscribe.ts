@@ -2,12 +2,11 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@libsql/client';
 import { v4 as uuidv4 } from 'uuid';
 
-const dbURL: any = process.env.TURSO_DB_SUBSCRIBERS_URL
 
 // Initialize Turso Client
 const client = createClient({
-    url: dbURL,
-    authToken: process.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN,
+    url: process.env.TURSO_DB_SUBSCRIBERS_URL as string,
+    authToken: process.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN as string,
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -15,7 +14,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { email } = req.body;
+    let email;
+    try {
+        // Parse the request body
+        const body = JSON.parse(req.body as string);
+        email = body.email;
+    } catch (error) {
+        return res.status(400).json({ error: 'Invalid request body' });
+    }
 
     if (!email || !email.match(/^\S+@\S+\.\S+$/)) {
         return res.status(400).json({ error: 'Invalid email address' });
