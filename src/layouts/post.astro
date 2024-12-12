@@ -92,7 +92,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                         <br/>
                         {
                             USE_SUBSCRIPTION ?
-                            <form action="/api/subscribe" id="subscriberForm" class="subscription-form">
+                            <form action="/api/subscribe" method="post" id="subscriberForm" class="subscription-form">
                                 <label for="email"></label>
                                 <input type="email" name="email" id="email" placeholder="Enter your email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
                                 <button type="submit">Subscribe</button>
