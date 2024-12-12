@@ -2,7 +2,7 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-	readonly REDIS_URI: string;
+	/* readonly REDIS_URI: string; */
 	readonly SITE_URI: string;
 	readonly OAUTH_GITHUB_CLIENT_ID: string;
 	readonly OAUTH_GITHUB_CLIENT_SECRET: string;
