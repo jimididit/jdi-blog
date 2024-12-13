@@ -6,6 +6,7 @@ import DefaultPageLayout from '$/layouts/default.astro'
 import PostPreviewList from '$/components/PostPreviewList.astro'
 import Prose from '$/components/Prose.astro'
 import { Content as AboutJimiIntro } from './_intro.md'
+import SpeedInsights from "@vercel/speed-insights/astro"
 
 
 const title = 'Home'
@@ -31,6 +32,7 @@ const posts = await getCollection('blog')
     <div class="page__actions">
         <a class="action__go-to-blog ink-h" href="/blog" title="All Posts">All Posts &rarr;</a>
     </div>
+    <SpeedInsights />
 </DefaultPageLayout>
 
 <style>
