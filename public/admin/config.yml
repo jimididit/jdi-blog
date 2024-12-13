@@ -3,12 +3,12 @@ backend:
   branch: main
   publish_mode: editorial_workflow
   repo: jimididit/jdi-blog
-  site_domain: jdi-blog.vercel.app # change this domain
-  base_url: https://jdi-blog.vercel.app # change this to prod URL
+  site_domain: blog.jimididit.com
+  base_url: https://blog.jimididit.com
   auth_scope: repo
   auth_endpoint: oauth
-  display_url: https://jdi-blog.vercel.app
-  logo_url: https://jdi-blog.vercel.app/assets/logo.svg
+  display_url: https://blog.jimididit.com
+  logo_url: https://blog.jimididit.com/assets/logo.svg
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
