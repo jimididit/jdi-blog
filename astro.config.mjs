@@ -18,7 +18,7 @@ import decapCmsOauth from "astro-decap-cms-oauth";
 // https://astro.build/config
 export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
   output: 'server',
-  site: 'https://jdi-blog.vercel.app',
+  site: 'https://blog.jimididit.com',
   server: {
     port: 4321, // The port to run the dev server on.
   },
