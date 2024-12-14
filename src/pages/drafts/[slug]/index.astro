@@ -6,7 +6,7 @@ import { getSlugFromPathname } from '$/utils'
 export async function getStaticPaths({ }) {
     let allPosts = []
     try {
-        allPosts = await Astro.glob('../../../drafts/*.md')
+        allPosts = await Astro.glob('../../../drafts/*.{md,mdx,mdoc}')
     } catch(error) {
         console.log('No draft posts found while generating the draft pages')
     }
