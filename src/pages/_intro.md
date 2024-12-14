@@ -1,4 +1,4 @@
-**You found it!** My blog... where I share insights from over 15 years as a full-stack developer and hacking enthusiast. Here, you'll find tutorials, personal experiences, and discussions on topics like programming languages, web application security, and advanced Linux measures, all aimed at inspiring and educating fellow pros and enthusiasts...     
+**You found it!** My blog... where I share insights from over 15 years as a full-stack developer and hacking enthusiast. Here, you'll find tutorials, personal experiences, and discussions on topics like programming languages, web application security, and advanced Linux measures, all aimed at inspiring and educating fellow pros and enthusiasts...
 ### Hack The Planet!
 **Creator:** Jimi Flynn
 <div style="display: flex; justify-content: start; gap: 10px; flex-wrap: wrap;">
@@ -15,4 +15,3 @@
     <img src="https://img.shields.io/badge/Discord-Nokturnal-5865F2?style=flat-square&logo=Discord&logoColor=white" alt="Nokturnal Community" />
   </a>
 </div>
-                
