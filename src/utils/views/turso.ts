@@ -8,14 +8,14 @@ export const client = createClient({
 console.log("TURSO_DB_URL:", import.meta.env.TURSO_DB_URL);
 console.log("TURSO_DB_AUTH_TOKEN:", import.meta.env.TURSO_DB_AUTH_TOKEN ? "Present" : "Missing");
 
-(async () => {
-    try {
-        const result = await client.execute('SELECT 1');
-        console.log('Turso connection test successful:', result);
-    } catch (error) {
-        console.error('Error testing Turso connection:', error);
-    }
-})();
+// (async () => {
+//     try {
+//         const result = await client.execute('SELECT 1');
+//         console.log('Turso connection test successful:', result);
+//     } catch (error) {
+//         console.error('Error testing Turso connection:', error);
+//     }
+// })();
 
 export const getViewsBySlug = async (slug: string) => {
     if (!slug) return 0;
