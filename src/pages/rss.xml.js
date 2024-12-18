@@ -22,7 +22,7 @@ export const get = () =>
 		items: sortedPosts.map((item) => ({
 			title: item.data.title,
 			description: item.data.description,
-			link: `blog/${item.slug}`,
+			link: `${import.meta.env.PUBLIC_SITE_URI}/blog/${item.slug}`,
 			pubDate: new Date(item.data.date),
 		})),
 		// (optional) inject custom xml
