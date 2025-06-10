@@ -47,7 +47,7 @@ export const SITE = {
 	authorImage: "https://avatars.githubusercontent.com/u/98427565?v=4",
 	// Author: Bio
 	authorBio:
-		"Programming Geek, Cybersecurity Enthusiast, Content Creator",
+		"Pro Dev, Mid Hacker, Content Creator",
 };
 
 // Ink - Theme configuration

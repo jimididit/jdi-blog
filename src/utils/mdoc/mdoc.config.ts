@@ -3,6 +3,8 @@ import { link } from "./schema/link.mdoc";
 import { tweetEmbed } from "./schema/tweet-embed.mdoc";
 import { tabs } from "./schema/tabs.mdoc";
 import { ytEmbed } from "./schema/yt-embed.mdoc";
+import { shikiConfig } from "./schema/shiki.mdoc";
+import shiki from "@astrojs/markdoc/shiki";
 
 /** @type {import('@markdoc/markdoc').Config} */
 export const config = {

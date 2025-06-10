@@ -1,4 +1,5 @@
-**You found it!** My blog... where I share insights from over 15 years as a full-stack developer and hacking enthusiast. Here, you'll find tutorials, personal experiences, and discussions on topics like programming languages, web application security, and advanced Linux measures, all aimed at inspiring and educating fellow pros and enthusiasts...
+**Hi, h4xx0rs!!** Welcome to an experienced devs experiences.
+.
 ### Hack The Planet!
 **Creator:** Jimi Flynn
 <div style="display: flex; justify-content: start; gap: 10px; flex-wrap: wrap;">

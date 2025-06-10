@@ -17,8 +17,8 @@ const posts = await getCollection('blog')
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
     <div class="hero ">
         <div class="hero__face">
-            <div class="author-card" style="background-image: url(assets/grid_dot_pattern.png); background-size: contain; background-repeat: no-repeat;">
-                <img src="assets/profile.png" title="Jimi" />
+            <div class="author-card" style="background-image: url(assets/grid_dot_pattern.png); background-position: center center;background-size: 125%; z-index: -1; background-repeat: no-repeat;">
+                <img src="assets/profile.png" style="position: absolute;margin-left: -50px;z-index: -1 !important; " title="Jimi" />
             </div>
         </div>
         <div class="hero__says">
@@ -40,16 +40,16 @@ const posts = await getCollection('blog')
         @apply flex flex-col md:flex-row gap-8 w-full transition-all pb-4
     }
     .hero__face {
-        @apply flex md:flex-none justify-center
+        @apply hidden md:flex md:flex-none justify-center
     }
     .hero__says {
         @apply flex-1 text-center md:text-left
     }
     .author-card {
-        @apply  h-48 w-48 md:h-56 rounded-sm
+        @apply  h-48 w-48 md:w-56 md:h-72
     }
     .author-card img {
-        @apply rounded-sm
+        @apply h-48 w-48 md:h-[300px] md:w-[350px]
     }
     .page__actions {
         @apply flex justify-center md:justify-end py-6

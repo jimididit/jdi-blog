@@ -47,8 +47,7 @@ Imagine spending weeks or months on a project, only to have it compromised by an
 First, install Fail2Ban by running the following command in your terminal:
 
 ```bash
-sudo apt-get update
-sudo apt-get install fail2ban
+sudo apt-get update && sudo apt-get install fail2ban
 ```
 
 For distributions that don't use `apt-get` (e.g., Fedora or CentOS):
@@ -74,6 +73,7 @@ sudo nano /etc/fail2ban/jail.local
 Example configuration:
 
 ```ini
+
 [DEFAULT]
 bantime = 3600
 findtime = 600

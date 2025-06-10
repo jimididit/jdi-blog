@@ -25,15 +25,26 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
-      theme: 'css-variables',
+      theme: 'ayu-dark',
+      wrap: true,
+      langs: ['batch', 'bash', 'markdown', 'powershell', 'ps1', 'html']
     },
     remarkPlugins: [
       remarkCodeTitles
     ]
   },
   integrations: [
-    mdx(), 
-    markdoc(),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: {
+        theme: 'ayu-dark',
+        wrap: true,
+        langs: ['batch', 'bash', 'markdown', 'ini', 'powershell', 'ps1', 'html']
+      },
+    }), 
+    markdoc({
+      allowHTML: true,
+    }),
     svelte(), 
     tailwind({
       applyBaseStyles: false,
