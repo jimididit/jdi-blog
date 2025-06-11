@@ -26,7 +26,7 @@ export const NAV_ITEMS: NavItems = {
 export const SITE = {
 	// Site's details
 	name: "jimididit",
-	title: "Blog",
+	title: "jimididit Blog",
 	description: "An Experienced Developer's Experiences",
 	url: "https://jdi-blog.vercel.app",
 	githubUrl: "https://github.com/jimididit",

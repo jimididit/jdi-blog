@@ -3,7 +3,7 @@
 [![CI](https://github.com/jimididit/jdi-blog/actions/workflows/main.yml/badge.svg)](https://github.com/jimididit/jdi-blog/actions/workflows/main.yml)
 
 
-This is my personal blog website where I share my thoughts, tutorials, and updates on various topics. The site is built to be fast, minimalistic, and developer-friendly, showcasing the latest web development technologies.
+This is my personal blog where I share my thoughts, tutorials, and updates on various topics. The site is built to be fast, minimalistic, and developer-friendly, showcasing the latest web development technologies.
 
 ## Tech Stack
 

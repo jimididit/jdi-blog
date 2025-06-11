@@ -49,7 +49,11 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
     tailwind({
       applyBaseStyles: false,
     }), 
-    sitemap(),
+    sitemap({
+      lastmod: new Date(),
+      changefreq: 'daily',
+      priority: 1,
+    }),
     decapCmsOauth()
   ],
   vite: {
