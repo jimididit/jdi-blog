@@ -3342,3 +3342,15 @@ The date sorting should now work correctly, and your home page will display the 
 
 ---
 
+_**User (2025-11-20 19:17Z)**_
+
+why do i see an issue with the vercel speedinsights component in index.astro?
+
+---
+
+_**Agent (model composer-1, mode Agent)**_
+
+
+
+---
+
