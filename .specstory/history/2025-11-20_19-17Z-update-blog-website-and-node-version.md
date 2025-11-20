@@ -2421,3 +2421,78 @@ Should I check for newer versions of `mdx` or `astro-decap-cms-oauth` that might
 
 ---
 
+_**User (2025-11-20 19:17Z)**_
+
+
+
+---
+
+_**Agent (model composer-1, mode Agent)**_
+
+
+
+---
+
+
+The `vercel.json` error is due to an invalid `nodeVersion` property. Vercel reads the Node version from `package.json`'s `engines` field, not from `vercel.json`. Removing `nodeVersion` from `vercel.json`:
+
+
+---
+
+<tool-use data-tool-type="read" data-tool-name="read_file">
+<details><summary>Tool use: **read_file** • Read file: vercel.json</summary>
+
+</details>
+</tool-use>
+
+---
+
+
+
+---
+
+
+Removing the invalid `nodeVersion` property. Vercel reads the Node version from `package.json`'s `engines` field, not from `vercel.json`.
+
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="search_replace">
+
+<details><summary>Tool use: **code_edit** • Edit file: vercel.json</summary>
+
+**Chunk 1**
+Lines added: 1, lines removed: 2
+
+```diff
+@@ -3,6 +3,5 @@
+    &quot;devCommand&quot;: &quot;npm run dev&quot;,
+    &quot;installCommand&quot;: &quot;npm install&quot;,
+-   &quot;framework&quot;: &quot;astro&quot;,
+-   &quot;nodeVersion&quot;: &quot;20.x&quot;
++   &quot;framework&quot;: &quot;astro&quot;
+  }
+  
+```
+
+</details>
+
+</tool-use>
+
+---
+
+
+
+---
+
+
+Removed the invalid `nodeVersion` property from `vercel.json`. Vercel reads the Node version from `package.json`'s `engines` field (set to `"20"`), not from `vercel.json`.
+
+The deployment should work now. Vercel will:
+- Use Node 20 from `package.json`'s `engines` field
+- Use the build commands specified in `vercel.json` (or auto-detect them for Astro)
+
+Commit and push this change to trigger a new deployment. The build should succeed.
+
+---
+
