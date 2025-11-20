@@ -16,11 +16,11 @@
         <h3 class="header__title dark:text-theme-dark-secondary">
             <a href="/">{ SITE.name }</a>
         </h3>
-        <div class="header__meta-more flex">
+        <div class="header__meta-more sm:flex">
             <p class="header__desc">
                 { SITE.description }
             </p>
-            <nav class="header__nav flex">
+            <nav class="header__nav flex mt-2 sm:mt-0">
                 <ul class="header__ref-list">
                     <li>
                         <SearchBtn client:visible />
@@ -61,7 +61,7 @@
         @apply text-4xl font-extrabold md:text-5xl text-theme-secondary dark:text-theme-dark-secondary
     }
     .header__desc {
-        @apply text-xl flex-1 dark:text-gray-200
+        @apply text-xl dark:text-gray-200 sm:flex-1 sm:mr-4
     }
     .header__ref-list {
         @apply flex gap-3 text-gray-400
