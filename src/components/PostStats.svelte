@@ -11,7 +11,7 @@
         if(slug && slug.trim() !== '') {
             try {
                 loading = true
-                const resp = await fetch(`/api/blog/views/${slug}.json`)
+                const resp = await fetch(`/api/blog/views/${slug}`)
                 
                 if (!resp.ok) {
                     console.error('PostStats: API returned', resp.status, resp.statusText)
