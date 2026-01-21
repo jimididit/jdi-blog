@@ -11,9 +11,28 @@ import { getViewsBySlug } from "src/utils/views/turso";
 
 
 export const GET: APIRoute = async ({ params, request }) => {
-	return new Response(
-		JSON.stringify({
-			views: params.slug ? await getViewsBySlug(params.slug) : 0,
-		}),
-	);
+	try {
+		const views = params.slug ? await getViewsBySlug(params.slug) : 0;
+		
+		return new Response(
+			JSON.stringify({ views }),
+			{
+				status: 200,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+	} catch (error) {
+		console.error('Error fetching views:', error);
+		return new Response(
+			JSON.stringify({ views: 0, error: 'Failed to fetch views' }),
+			{
+				status: 500,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+	}
 };

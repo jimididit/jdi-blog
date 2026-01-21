@@ -12,8 +12,20 @@
             try {
                 loading = true
                 const resp = await fetch(`/api/blog/views/${slug}.json`)
+                
+                if (!resp.ok) {
+                    console.error('PostStats: API returned', resp.status, resp.statusText)
+                    return
+                }
+                
+                const contentType = resp.headers.get('content-type')
+                if (!contentType || !contentType.includes('application/json')) {
+                    console.error('PostStats: Expected JSON but got', contentType)
+                    return
+                }
+                
                 const stats = await resp.json()
-                views = stats.views
+                views = stats.views || 0
             } catch(e) {
                 console.error('PostStats', e)
             } finally {
