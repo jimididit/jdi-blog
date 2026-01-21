@@ -27,3 +27,4 @@ netlify
 .cursor
 .cursorindexingignore
 .specstory
+.cursorignore
