@@ -9,10 +9,26 @@ import { getViewsBySlug } from "src/utils/views/turso";
 // When deploying, and you have either `ioredis` or `turso` configured with your cloned version - 
 // please uncomment the respective line
 
+export const prerender = false;
 
 export const GET: APIRoute = async ({ params, request }) => {
 	try {
-		const views = params.slug ? await getViewsBySlug(params.slug) : 0;
+		// Log for debugging in production
+		console.log('[API] Views endpoint called with slug:', params.slug);
+		
+		if (!params.slug) {
+			return new Response(
+				JSON.stringify({ views: 0, error: 'Missing slug parameter' }),
+				{
+					status: 400,
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
+		}
+		
+		const views = await getViewsBySlug(params.slug);
 		
 		return new Response(
 			JSON.stringify({ views }),
@@ -24,9 +40,13 @@ export const GET: APIRoute = async ({ params, request }) => {
 			}
 		);
 	} catch (error) {
-		console.error('Error fetching views:', error);
+		console.error('[API] Error fetching views:', error);
 		return new Response(
-			JSON.stringify({ views: 0, error: 'Failed to fetch views' }),
+			JSON.stringify({ 
+				views: 0, 
+				error: 'Failed to fetch views',
+				message: error instanceof Error ? error.message : 'Unknown error'
+			}),
 			{
 				status: 500,
 				headers: {
