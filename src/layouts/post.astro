@@ -5,7 +5,7 @@ import { SITE, USE_POST_IMG_OVERLAY, USE_AUTHOR_CARD, USE_SUBSCRIPTION, USE_VIEW
 import MainLayout from '$/components/MainLayout.astro'
 import BaseHead from '$/components/BaseHead.astro'
 import Prose from '$/components/Prose.astro'
-// import PostStats from '$/components/PostStats.svelte'
+import PostStats from '$/components/PostStats.svelte'
 import EditUrl from '$/components/EditLink.astro'
 import FAQSchema from '$/components/FAQSchema.astro'
 
@@ -58,7 +58,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                         { USE_VIEW_STATS && ` | `}
                         { USE_VIEW_STATS && 
                             <Icon class="w-5 h-5 inline-block" pack="mdi" name="eye" />
-                            // <PostStats slug={meta?.slug} client:load /> 
+                            <PostStats slug={meta?.slug} client:load /> 
                         }
                         <!-- | <Icon class="w-5 h-5 inline-block" pack="mdi" name="clock" /> 2 mins -->
                     </span>
