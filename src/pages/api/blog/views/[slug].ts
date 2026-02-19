@@ -15,6 +15,10 @@ export const GET: APIRoute = async ({ params, request }) => {
 	try {
 		// Log for debugging in production
 		console.log('[API] Views endpoint called with slug:', params.slug);
+		console.log('[API] Environment check:', {
+			hasUrl: !!(process.env.TURSO_DB_URL || import.meta.env.TURSO_DB_URL),
+			hasToken: !!(process.env.TURSO_DB_AUTH_TOKEN || import.meta.env.TURSO_DB_AUTH_TOKEN)
+		});
 		
 		if (!params.slug) {
 			return new Response(
@@ -23,6 +27,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 					status: 400,
 					headers: {
 						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
 					},
 				}
 			);
@@ -36,6 +41,8 @@ export const GET: APIRoute = async ({ params, request }) => {
 				status: 200,
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Cache-Control': 'no-cache, no-store, must-revalidate',
 				},
 			}
 		);
@@ -51,6 +58,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 				status: 500,
 				headers: {
 					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
 				},
 			}
 		);

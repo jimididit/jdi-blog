@@ -1,17 +1,29 @@
 import { createClient } from "@libsql/client";
 
-export const client = createClient({
-    url: import.meta.env.TURSO_DB_URL,
-    authToken: import.meta.env.TURSO_DB_AUTH_TOKEN
-});
-
-console.log("TURSO_DB_URL:", import.meta.env.TURSO_DB_URL);
-console.log("TURSO_DB_AUTH_TOKEN:", import.meta.env.TURSO_DB_AUTH_TOKEN ? "Present" : "Missing");
+// Create client getter function to ensure env vars are available
+const getClient = () => {
+    // Use process.env for Vercel compatibility, fallback to import.meta.env for Astro dev
+    const url = process.env.TURSO_DB_URL || import.meta.env.TURSO_DB_URL;
+    const authToken = process.env.TURSO_DB_AUTH_TOKEN || import.meta.env.TURSO_DB_AUTH_TOKEN;
+    
+    if (!url || !authToken) {
+        console.error('Missing Turso credentials:', {
+            url: url ? 'Present' : 'Missing',
+            authToken: authToken ? 'Present' : 'Missing'
+        });
+        throw new Error('TURSO_DB_URL and TURSO_DB_AUTH_TOKEN must be set');
+    }
+    
+    return createClient({
+        url,
+        authToken
+    });
+};
 
 // Initialize the post_stats table if it doesn't exist
 let tableInitialized = false;
 
-const initializeTable = async () => {
+const initializeTable = async (client: ReturnType<typeof getClient>) => {
     if (tableInitialized) return;
     
     try {
@@ -33,8 +45,11 @@ const initializeTable = async () => {
 export const getViewsBySlug = async (slug: string) => {
     if (!slug) return 0;
 
+    // Get client instance (creates new one each time to ensure env vars are fresh)
+    const client = getClient();
+    
     // Ensure table exists before proceeding
-    await initializeTable();
+    await initializeTable(client);
 
     try {
         console.log('Starting transaction...');
@@ -81,7 +96,7 @@ export const getViewsBySlug = async (slug: string) => {
             error?.message?.includes('no such table: post_stats')) {
             console.log('Table missing, reinitializing...');
             tableInitialized = false;
-            await initializeTable();
+            await initializeTable(client);
             
             // Retry once after initialization
             try {
