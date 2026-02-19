@@ -8,6 +8,7 @@ import Prose from '$/components/Prose.astro'
 import PostStats from '$/components/PostStats.svelte'
 import EditUrl from '$/components/EditLink.astro'
 import FAQSchema from '$/components/FAQSchema.astro'
+import { getViewsBySlug } from '$/utils/views/turso'
 
 
 interface Props {
@@ -22,6 +23,17 @@ interface Props {
     }
 }
 const { content, meta } = Astro.props
+
+// Fetch views server-side if view stats are enabled
+let views = 0
+if (USE_VIEW_STATS && meta?.slug) {
+    try {
+        views = await getViewsBySlug(meta.slug)
+    } catch (error) {
+        console.error('Error fetching views:', error)
+        views = 0
+    }
+}
 
 const AUTHOR_NAME = content.author ? content.author : SITE?.author ? SITE?.author : "Author"
 const AUTHOR_TWITTER = content.authorTwitter ? content.authorTwitter : SITE?.authorTwitter ? SITE?.authorTwitter : ""
@@ -57,8 +69,10 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                     <span class="post__stats">
                         { USE_VIEW_STATS && ` | `}
                         { USE_VIEW_STATS && 
-                            <Icon class="w-5 h-5 inline-block" pack="mdi" name="eye" />
-                            <PostStats slug={meta?.slug} client:load /> 
+                            <>
+                                <Icon class="w-5 h-5 inline-block" pack="mdi" name="eye" />
+                                <PostStats views={views} />
+                            </>
                         }
                         <!-- | <Icon class="w-5 h-5 inline-block" pack="mdi" name="clock" /> 2 mins -->
                     </span>
