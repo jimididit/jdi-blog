@@ -11,6 +11,19 @@ import { getViewsBySlug } from "src/utils/views/turso";
 
 export const prerender = false;
 
+// Handle CORS preflight requests
+export const OPTIONS: APIRoute = async () => {
+	return new Response(null, {
+		status: 204,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'GET, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type',
+			'Access-Control-Max-Age': '86400',
+		},
+	});
+};
+
 export const GET: APIRoute = async ({ params, request }) => {
 	try {
 		// Log for debugging in production

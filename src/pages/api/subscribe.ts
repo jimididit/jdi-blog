@@ -1,11 +1,12 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createClient } from '@libsql/client';
-import { v4 as uuidv4 } from 'uuid';
+import type { APIRoute } from "astro";
+import { createClient } from "@libsql/client";
+import { v4 as uuidv4 } from "uuid";
 
 // Create client getter function to ensure env vars are available
 const getClient = () => {
-    const url = process.env.TURSO_DB_SUBSCRIBERS_URL;
-    const authToken = process.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN;
+    // Use process.env for Vercel compatibility, fallback to import.meta.env for Astro dev
+    const url = process.env.TURSO_DB_SUBSCRIBERS_URL || import.meta.env.TURSO_DB_SUBSCRIBERS_URL;
+    const authToken = process.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN || import.meta.env.TURSO_DB_SUBSCRIBERS_AUTH_TOKEN;
     
     if (!url || !authToken) {
         console.error('Missing Turso subscriber credentials:', {
@@ -22,7 +23,10 @@ const getClient = () => {
 };
 
 // Initialize table if it doesn't exist
+let tableInitialized = false;
 const initializeTable = async (client: ReturnType<typeof getClient>) => {
+    if (tableInitialized) return;
+    
     try {
         await client.execute(`
             CREATE TABLE IF NOT EXISTS subscribers (
@@ -31,6 +35,7 @@ const initializeTable = async (client: ReturnType<typeof getClient>) => {
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
+        tableInitialized = true;
         console.log('subscribers table initialized successfully');
     } catch (error) {
         console.error('Error initializing subscribers table:', error);
@@ -38,18 +43,25 @@ const initializeTable = async (client: ReturnType<typeof getClient>) => {
     }
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+export const prerender = false;
 
-    const { email } = req.body;
-
-    if (!email || !email.match(/^\S+@\S+\.\S+$/)) {
-        return res.status(400).json({ error: 'Invalid email address' });
-    }
-
+export const POST: APIRoute = async ({ request }) => {
     try {
+        const body = await request.json();
+        const { email } = body;
+
+        if (!email || !email.match(/^\S+@\S+\.\S+$/)) {
+            return new Response(
+                JSON.stringify({ error: 'Invalid email address' }),
+                {
+                    status: 400,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+        }
+
         // Get client instance
         const client = getClient();
         
@@ -72,13 +84,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
 
         // Respond with success
-        return res.status(200).json({ message: 'Subscription successful!' });
+        return new Response(
+            JSON.stringify({ message: 'Subscription successful!' }),
+            {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
     } catch (error) {
         console.error('Error saving subscriber:', error);
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-        return res.status(500).json({ 
-            error: 'Failed to save subscriber',
-            message: errorMessage
-        });
+        return new Response(
+            JSON.stringify({ 
+                error: 'Failed to save subscriber',
+                message: errorMessage
+            }),
+            {
+                status: 500,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
     }
-}
+};

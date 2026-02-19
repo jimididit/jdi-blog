@@ -75,6 +75,7 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
       enabled: true,
     },
     imageService: true,
-    devImageService: 'sharp'
+    devImageService: 'sharp',
+    functionPerRoute: false
   })
 });
