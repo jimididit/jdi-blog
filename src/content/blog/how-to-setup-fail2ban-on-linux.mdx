@@ -13,6 +13,15 @@ authorTwitter: "@jimididit"
 date: "2024-08-02"
 category: "Cybersecurity"
 image: /assets/blog/howto-setup-fail2ban.jpg
+faq:
+  - question: "Can Fail2Ban protect against all types of cyber attacks?"
+    answer: "No, Fail2Ban is primarily effective against brute-force attacks. Use it alongside other tools like firewalls and intrusion detection systems."
+  - question: "How do I unban an IP that was mistakenly banned?"
+    answer: "Use: `sudo fail2ban-client set sshd unbanip <IP_ADDRESS>`"
+  - question: "Is Fail2Ban resource-intensive?"
+    answer: "No, it's lightweight and efficient."
+  - question: "Can I configure Fail2Ban to send me email alerts?"
+    answer: "Yes, configure email notifications in the `jail.local` file."
 ---
 
 ## Introduction

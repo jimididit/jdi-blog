@@ -7,6 +7,7 @@ import BaseHead from '$/components/BaseHead.astro'
 import Prose from '$/components/Prose.astro'
 import PostStats from '$/components/PostStats.svelte'
 import EditUrl from '$/components/EditLink.astro'
+import FAQSchema from '$/components/FAQSchema.astro'
 
 
 interface Props {
@@ -31,6 +32,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
 <html lang="en">
     <head>
         <BaseHead {...content} title={ content.title ? `${ SITE.title } | ${content.title}` : SITE.title }/>
+        <FAQSchema faqs={content.faq} />
     </head>
     <MainLayout>
         <div class="post__header">

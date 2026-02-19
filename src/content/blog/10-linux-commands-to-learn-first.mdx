@@ -12,6 +12,23 @@ authorTwitter: "@jimididit"
 date: "2024-06-06"
 category: "Linux Tutorials"
 image: /assets/blog/10-linux-commands.webp
+faq:
+  - question: "How do I learn more about a specific command?"
+    answer: "Use the `man` command followed by the command name, like `man ls`, to access the manual pages."
+  - question: "Can I recover a file deleted with `rm`?"
+    answer: "Unfortunately, files deleted with `rm` are not sent to a trash bin and cannot be easily recovered. Always double-check before deleting."
+  - question: "How can I copy multiple files at once?"
+    answer: "Use a wildcard character, like `cp *.txt /destination`, to copy all text files in the current directory to a specified location."
+  - question: "How can I see the history of commands I've entered in the terminal?"
+    answer: "Use the `history` command to display a list of commands you've previously executed. You can also use the `!` character followed by a number to repeat a command from your history list (e.g., `!5` to repeat the fifth command)."
+  - question: "What should I do if I accidentally delete a critical file with the `rm` command?"
+    answer: "If you accidentally delete a file, immediately stop using the system to minimize data overwriting and use file recovery tools such as `testdisk` or `photorec`. Regular backups are crucial to avoid such situations."
+  - question: "How can I search for files by name within a directory?"
+    answer: "Use the `find` command. For example, to find a file named `example.txt` in the current directory and its subdirectories, use: `find . -name \"example.txt\"`."
+  - question: "Can I run multiple commands in a single line?"
+    answer: "Yes, you can chain multiple commands using a semicolon (`;`). For example, `cd /myfolder; ls -l` will change the directory to `/myfolder` and then list its contents."
+  - question: "How can I redirect the output of a command to a file?"
+    answer: "Use the `>` operator to redirect output to a file. For instance, `ls -l > directory_contents.txt` saves the output of `ls -l` to `directory_contents.txt`. Use `>>` to append to the file instead of overwriting it."
 ---
 
 # Which Linux Commands Should You Learn First?

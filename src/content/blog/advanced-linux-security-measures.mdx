@@ -12,6 +12,17 @@ authorTwitter: "@jimididit"
 date: "2024-07-010"
 category: "Cybersecurity"
 image: /assets/blog/advanced-linux-security.webp
+faq:
+  - question: "What is the benefit of passwordless SSH login?"
+    answer: "Passwordless SSH login provides enhanced security by using cryptographic keys instead of passwords, making it nearly impossible for attackers to gain access without both the private and public keys."
+  - question: "Why should I disable root login via SSH?"
+    answer: "Disabling root login reduces the attack surface of your server, forcing attackers to compromise a less privileged account, which is more difficult to escalate."
+  - question: "Is Two-Factor Authentication (2FA) necessary for SSH?"
+    answer: "While not mandatory, 2FA adds a significant security layer by requiring a second form of authentication, reducing the risk of unauthorized access even if the SSH key is compromised."
+  - question: "How often should I review and update my SSH configuration?"
+    answer: "Regularly review and update your SSH configuration to ensure it aligns with the latest security best practices and addresses newly discovered vulnerabilities."
+  - question: "Can I use multiple layers of these security measures together?"
+    answer: "Yes, combining measures like passwordless SSH, key-based authentication, 2FA, and disabling root login creates a robust defense against unauthorized access."
 ---
 
 # Advanced Linux Security Measures

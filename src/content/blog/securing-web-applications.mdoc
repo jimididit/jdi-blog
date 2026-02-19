@@ -12,6 +12,15 @@ authorTwitter: "@jimididit"
 date: "2024-09-02"
 category: "Cybersecurity"
 image: /assets/blog/webapp-security.png
+faq:
+  - question: "What is the most common type of web attack?"
+    answer: "SQL Injection is one of the most common attacks."
+  - question: "How can I prevent SQL injection on my website?"
+    answer: "Use prepared statements, parameterized queries, and input sanitization."
+  - question: "Are WAFs enough to secure a website?"
+    answer: "WAFs provide an important layer of defense but should be complemented by secure coding practices and regular security testing."
+  - question: "What are the first steps in securing a new website?"
+    answer: "Use HTTPS, follow secure coding practices, and update all software and third-party components."
 ---
 
 ## Introduction
@@ -32,7 +41,8 @@ Web security isn’t just a checkbox—it’s an ongoing process. As developers,
 
 SQL injection happens when an attacker inserts malicious SQL code into an input field, tricking the application into executing unintended commands. This can lead to unauthorized access to sensitive data.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Use **prepared statements** and **parameterized queries**.
 - Sanitize and validate user inputs.
 - Learn more: [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html).
@@ -41,7 +51,8 @@ SQL injection happens when an attacker inserts malicious SQL code into an input 
 
 XSS allows attackers to inject malicious scripts into a web page, which are then executed by unsuspecting users. These scripts can steal cookies, hijack sessions, or spread malware.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Sanitize all user inputs.
 - Use **Content Security Policy (CSP)**.
 - Encode outputs before rendering on the page.
@@ -50,7 +61,8 @@ XSS allows attackers to inject malicious scripts into a web page, which are then
 
 CSRF tricks users into performing actions they didn’t intend, such as changing their password or making a purchase.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Use anti-CSRF tokens.
 - Check the referer header.
 - Restrict cookie access with HTTP-only and secure flags.
@@ -59,7 +71,8 @@ CSRF tricks users into performing actions they didn’t intend, such as changing
 
 DoS and DDoS attacks overwhelm your server with traffic, making it unresponsive.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Use a **Content Delivery Network (CDN)**.
 - Implement rate limiting.
 - Deploy a **Web Application Firewall (WAF)**.
@@ -68,7 +81,8 @@ DoS and DDoS attacks overwhelm your server with traffic, making it unresponsive.
 
 IDOR occurs when attackers manipulate references to access unauthorized resources.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Implement access controls.
 - Use indirect references like tokens or hashed values.
 - Test endpoints for tampering vulnerabilities.
@@ -77,7 +91,8 @@ IDOR occurs when attackers manipulate references to access unauthorized resource
 
 Security misconfiguration happens when servers or applications are left in their default states, exposing them to unnecessary risks.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Disable unnecessary features and services.
 - Regularly update and patch systems.
 - Harden server configurations and change default credentials.
@@ -86,7 +101,8 @@ Security misconfiguration happens when servers or applications are left in their
 
 Sensitive data exposure happens when applications fail to protect information like personal details or credentials.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Encrypt data at rest and in transit.
 - Enforce HTTPS everywhere.
 - Use strong encryption protocols like AES-256.
@@ -95,7 +111,8 @@ Sensitive data exposure happens when applications fail to protect information li
 
 Third-party libraries and frameworks can introduce vulnerabilities if not properly managed.
 
-#### Prevention Tips:
+#### Prevention Tips
+
 - Regularly update dependencies.
 - Use tools like Dependabot or Snyk to monitor vulnerabilities.
 - Review components for security before using them.
@@ -109,6 +126,7 @@ Third-party libraries and frameworks can introduce vulnerabilities if not proper
 ## Web Application Firewalls (WAF)
 
 A WAF helps protect your application by filtering and monitoring incoming traffic. Popular WAFs include:
+
 - [Cloudflare WAF](https://www.cloudflare.com/waf/)
 - [AWS WAF](https://aws.amazon.com/waf/)
 

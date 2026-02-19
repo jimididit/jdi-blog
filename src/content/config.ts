@@ -1,5 +1,10 @@
 import { z, defineCollection } from "astro:content";
 
+const faqSchema = z.object({
+	question: z.string(),
+	answer: z.string(),
+}).array().optional();
+
 const blogCollection = defineCollection({
 	schema: z.object({
 		title: z
@@ -13,6 +18,7 @@ const blogCollection = defineCollection({
 		date: z.string(),
 		image: z.string().optional(),
 		category: z.string(),
+		faq: faqSchema,
 	}),
 });
 
