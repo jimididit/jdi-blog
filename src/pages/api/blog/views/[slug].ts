@@ -9,6 +9,7 @@ import { getViewsBySlug } from "src/utils/views/turso";
 // When deploying, and you have either `ioredis` or `turso` configured with your cloned version - 
 // please uncomment the respective line
 
+// Ensure this route is not prerendered and runs as a serverless function
 export const prerender = false;
 
 // Handle CORS preflight requests
