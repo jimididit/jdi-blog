@@ -11,7 +11,7 @@
         if(slug && slug.trim() !== '') {
             try {
                 loading = true
-                const url = `/api/views/${slug}`
+                const url = `/api/views?slug=${encodeURIComponent(slug)}`
                 console.log('PostStats: Fetching views from', url)
                 const resp = await fetch(url)
                 

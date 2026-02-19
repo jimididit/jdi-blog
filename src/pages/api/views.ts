@@ -17,16 +17,19 @@ export const OPTIONS: APIRoute = async () => {
 	});
 };
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ url, request }) => {
 	try {
+		// Get slug from query parameter
+		const slug = url.searchParams.get('slug');
+		
 		// Log for debugging in production
-		console.log('[API] Views endpoint called with slug:', params.slug);
+		console.log('[API] Views endpoint called with slug:', slug);
 		console.log('[API] Environment check:', {
 			hasUrl: !!(process.env.TURSO_DB_URL || import.meta.env.TURSO_DB_URL),
 			hasToken: !!(process.env.TURSO_DB_AUTH_TOKEN || import.meta.env.TURSO_DB_AUTH_TOKEN)
 		});
 		
-		if (!params.slug) {
+		if (!slug) {
 			return new Response(
 				JSON.stringify({ views: 0, error: 'Missing slug parameter' }),
 				{
@@ -39,7 +42,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 			);
 		}
 		
-		const views = await getViewsBySlug(params.slug);
+		const views = await getViewsBySlug(slug);
 		
 		return new Response(
 			JSON.stringify({ views }),
